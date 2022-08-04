@@ -52,14 +52,26 @@ public class MainMenuController {
 
     // When the view monthly profits is clicked it gives a chart of cost/profit/sales for the current month that you are in.
     @FXML
-    void onViewMonthlyProfitsClick(ActionEvent event) {
-
+    void onViewMonthlyProfitsClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MonthlyProfits.fxml")));
+        Scene scene = new Scene(root);
+        Stage primaryStage = new Stage();
+        primaryStage.initModality(Modality.APPLICATION_MODAL);
+        primaryStage.setTitle("Monthly Profits");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     // When the view annual profits is click it gives a chart of cost/ profit and sales for all year.
     @FXML
-    void onViewAnnualProfit(ActionEvent event){
-
+    void onViewAnnualProfit(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AnnualProfits.fxml")));
+        Scene scene = new Scene(root);
+        Stage primaryStage = new Stage();
+        primaryStage.initModality(Modality.APPLICATION_MODAL);
+        primaryStage.setTitle("Annual Profits");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     // When edit orders is clicked it brings you to a window that allows you to edit the orders.
