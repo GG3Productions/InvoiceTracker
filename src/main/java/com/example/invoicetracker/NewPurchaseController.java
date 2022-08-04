@@ -6,17 +6,13 @@ import javafx.scene.control.*;
 
 public class NewPurchaseController {
     @FXML
-    private Button addNewPurchase;
+    private Button addNewPurchase,cancelNewPurchase,Refresh;
+
     @FXML
-    private Button cancelNewPurchase;
-    @FXML
-    private TextField newPurchaseCost;
+    private TextField newPurchaseCost,newPurchaseID;
 
     @FXML
     private TextArea newPurchaseDescription;
-
-    @FXML
-    private TextField newPurchaseID;
 
     @FXML
     private TableColumn<PSets, String>purID;
@@ -33,8 +29,6 @@ public class NewPurchaseController {
     @FXML
     private TableView<PSets> purchaseListHistory;
 
-    @FXML
-    private Button Refresh;
 
     @FXML
     void onRefreshClick(ActionEvent event){

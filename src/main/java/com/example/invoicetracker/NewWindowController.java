@@ -52,7 +52,6 @@ public class NewWindowController implements Initializable {
 
 
 
-
     ObservableList<Invoice> list = FXCollections.observableArrayList(
             new Invoice(LocalDate.now(),8,7,123456123,456,2.37,7.57,0,5.42,708.30),
             new Invoice(LocalDate.now(),8,8,123456123,456,2.37,7.57,0,5.42,708.30),

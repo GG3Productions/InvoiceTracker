@@ -14,8 +14,7 @@ import javafx.stage.Window;
 
 import java.io.IOException;
 import java.util.Objects;
-//i amn a mf marshin
-//Yessir!!!!!!
+
 
 public class MainMenuController {
     //open the new order invoice page and allow them to add new invoices.

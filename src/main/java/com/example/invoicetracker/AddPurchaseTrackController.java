@@ -9,15 +9,13 @@ import javafx.scene.control.TextField;
 
 public class AddPurchaseTrackController {
     @FXML
-    private Button addTracker;
-    @FXML
-    private Button cancelTrackAdding;
-    @FXML
-    private Button editTrackAdds;
-    @FXML
-    private Button finishedAdding;
+    private Button addTracker,cancelTrackAdding,editTrackAdds,finishedAdding;
+
     @FXML
     private Label idBeingAddedTo;
+
+    @FXML
+    private TextField amountMade;
 
     @FXML
     private TableColumn<PSets, Integer>index;
@@ -28,8 +26,7 @@ public class AddPurchaseTrackController {
     @FXML
     private TableColumn<PSets, Double>profits;
 
-    @FXML
-    private TextField amountMade;
+
 
     @FXML
     void onFinishedClick(ActionEvent event) {
