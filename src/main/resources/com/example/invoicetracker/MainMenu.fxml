@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.invoicetracker.MainMenuController">
+   <children>
+      <MenuBar fx:id="menuBar1" layoutX="90.0" layoutY="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="someItem" mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem fx:id="editOrders" mnemonicParsing="false" onAction="#onEditOrdersClick" text="Edit Invoices" />
+                  <MenuItem fx:id="editPurchaseTracker" mnemonicParsing="false" onAction="#onEditPurchaseTrackerClick" text="Edit Purchases" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Button fx:id="newInvoice" layoutX="45.0" layoutY="53.0" mnemonicParsing="false" onAction="#onNewInvoiceClick" prefHeight="129.0" prefWidth="213.0" text="NEW Invoice" />
+      <Button fx:id="viewAnnualProfits" layoutX="45.0" layoutY="226.0" mnemonicParsing="false" onAction="#onViewAnnualProfit" prefHeight="129.0" prefWidth="213.0" text="Annual Profits " />
+      <Button fx:id="viewMonthlyProfits" layoutX="346.0" layoutY="226.0" mnemonicParsing="false" onAction="#onViewMonthlyProfitsClick" prefHeight="129.0" prefWidth="213.0" text="Monthly Profits" />
+      <Button fx:id="newPurchase" layoutX="346.0" layoutY="46.0" mnemonicParsing="false" onAction="#onNewPurchaseClick" prefHeight="129.0" prefWidth="213.0" text="New Purchase" />
+   </children>
+</AnchorPane>
