@@ -2,7 +2,14 @@ package com.example.invoicetracker;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 import org.apache.poi.*;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -12,6 +19,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.Objects;
 
 
 public class NewPurchaseController {
@@ -22,7 +30,11 @@ public class NewPurchaseController {
 //    XSSFSheet sheet = workbook.getSheetAt(1);
 
     @FXML
-    private Button addNewPurchase,cancelNewPurchase,Refresh;
+    private Button addNewPurchase;
+    @FXML
+    private static Button cancelNewPurchase;
+    @FXML
+    private Button Refresh;
 
     @FXML
     private TextField newPurchaseCost,newPurchaseID;
@@ -58,8 +70,20 @@ public class NewPurchaseController {
 //        }
     }
     @FXML
-    void onCancelClick(ActionEvent event){
+    void onCancelClick(ActionEvent event) throws IOException {
     //FIXME: ask the user if they are sure they want to cancel adding a new purchase the return them to the main screen.
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CancelBox.fxml")));
+        Scene scene = new Scene(root);
+        Stage primaryStage = new Stage();
+        primaryStage.initModality(Modality.APPLICATION_MODAL);
+        primaryStage.setTitle("Cancel");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    @FXML
+    public static void hide() {
+        cancelNewPurchase.getScene().getWindow().hide();
     }
 
     @FXML
