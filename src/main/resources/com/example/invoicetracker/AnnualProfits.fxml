@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.invoicetracker.AnnualProfitsController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="535.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.invoicetracker.AnnualProfitsController">
+   <children>
+      <AnchorPane layoutY="-1.0" prefHeight="468.0" prefWidth="783.0">
+         <children>
+            <ScrollBar layoutX="775.0" orientation="VERTICAL" AnchorPane.bottomAnchor="0.3999938964843519" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <ScrollBar layoutY="495.6000061035156" AnchorPane.bottomAnchor="0.3999938964843519" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="14.0" />
+            <TableView prefHeight="452.0" prefWidth="770.0">
+              <columns>
+                <TableColumn fx:id="invoiceID" prefWidth="256.0000427365303" text="Invoice ID" />
+                <TableColumn fx:id="totalMade" minWidth="9.600006103515625" prefWidth="188.79998779296875" text="Total Made" />
+                  <TableColumn fx:id="lots" minWidth="0.0" prefWidth="120.79998779296875" text="Total Lots" />
+                  <TableColumn fx:id="pieces" prefWidth="112.79998779296875" text="Total Pieces" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <Button fx:id="done" layoutX="695.0" layoutY="480.0" mnemonicParsing="false" onAction="#onDoneClick" text="Done">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="refresh" layoutX="612.0" layoutY="480.0" mnemonicParsing="false" onAction="#onRefreshClick" text="Refresh">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

@@ -23,7 +23,7 @@ public class MainMenuController {
 
     // allow for editing of the purchase tracker if information was mis entered
     @FXML
-    private MenuItem editPurchaseTracker,editOrders;
+    private MenuItem editPurchaseTracker,editOrders,defaultFilePath;
 
     // When the new invoice button is clicked it brings the user to a new page that allows them to enter the new information on the invoice
     @FXML
@@ -96,5 +96,12 @@ public class MainMenuController {
          primaryStage.setScene(scene);
          primaryStage.show();**/
         //FIXME: set up the window to edit the information on purchases
+    }
+
+    // this will bring you to a separate screen where you can set the individual file paths for accessing the Excel documents
+    @FXML
+    void setFilePathOnClick(){
+        //TODO: create the method that makes these paths accessible to wherever they are needed
+        //TODO: these file paths will allow for all sheets and pages to be accessed
     }
 }
