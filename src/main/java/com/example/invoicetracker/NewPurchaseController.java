@@ -75,6 +75,13 @@ public class NewPurchaseController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CancelBox.fxml")));
         Scene scene = new Scene(root);
         Stage primaryStage = new Stage();
+        /*primaryStage.setOnCloseRequest(evt ->{
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "do you really want to cancel adding a new purchase?", ButtonType.YES,ButtonType.NO);
+            ButtonType result = alert.showAndWait().orElse(ButtonType.NO);
+            if(ButtonType.NO.equals(result)){
+                evt.consume();
+            }
+        });*/
         primaryStage.initModality(Modality.APPLICATION_MODAL);
         primaryStage.setTitle("Cancel");
         primaryStage.setScene(scene);
