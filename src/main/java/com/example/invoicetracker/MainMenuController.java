@@ -5,9 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.MenuButton;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -44,6 +42,13 @@ public class MainMenuController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("NewPurchase.fxml")));
         Scene scene = new Scene(root);
         Stage primaryStage = new Stage();
+        primaryStage.setOnCloseRequest(evt ->{
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "do you really want to cancel adding a new purchase?", ButtonType.YES,ButtonType.NO);
+            ButtonType result = alert.showAndWait().orElse(ButtonType.NO);
+            if(ButtonType.NO.equals(result)){
+                evt.consume();
+            }
+        });
         primaryStage.initModality(Modality.APPLICATION_MODAL);
         primaryStage.setTitle("New Purchase.....");
         primaryStage.setScene(scene);

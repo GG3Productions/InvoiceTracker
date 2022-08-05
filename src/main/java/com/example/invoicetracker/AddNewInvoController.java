@@ -32,7 +32,6 @@ public class AddNewInvoController {
         //FIXME: if the radiobutton is selected send the user to the add purchase tracking page
         if(purchaseTracking.isSelected()){
             Parent root = FXMLLoader.load(getClass().getResource("AddPurchaseTrack.fxml"));
-
             Scene scene = new Scene(root);
             Stage primaryStage = new Stage();
             primaryStage.setTitle("Add Purchase Tracking Data");
