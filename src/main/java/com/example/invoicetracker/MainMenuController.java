@@ -105,7 +105,15 @@ public class MainMenuController {
 
     // this will bring you to a separate screen where you can set the individual file paths for accessing the Excel documents
     @FXML
-    void setFilePathOnClick(){
+    void setFilePathOnClick(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("FilePathSelection.fxml"));
+         Scene scene = new Scene(root);
+         Stage primaryStage = new Stage();
+         primaryStage.setTitle("File Selection");
+         primaryStage.setScene(scene);
+         primaryStage.show();
+
+
         //TODO: create the method that makes these paths accessible to wherever they are needed
         //TODO: these file paths will allow for all sheets and pages to be accessed
     }
