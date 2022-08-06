@@ -32,8 +32,6 @@ public class NewPurchaseController {
     @FXML
     private Button addNewPurchase;
     @FXML
-    private static Button cancelNewPurchase;
-    @FXML
     private Button Refresh;
 
     @FXML
@@ -68,11 +66,6 @@ public class NewPurchaseController {
 //            Row row = rowIterator.next();
 //            // For each row, find the desired cells and write them to the GUI's table.
 //        }
-    }
-
-    @FXML
-    public static void hide() {
-        cancelNewPurchase.getScene().getWindow().hide();
     }
 
     @FXML
