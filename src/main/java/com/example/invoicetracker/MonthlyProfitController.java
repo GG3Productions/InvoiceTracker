@@ -82,6 +82,18 @@ public class MonthlyProfitController {
         MonthlyCalculation dec = new MonthlyCalculation(0,0,0,0,0,"December");
 
         List<MonthlyCalculation> monthList = new ArrayList<>();
+        monthList.add(jan);
+        monthList.add(feb);
+        monthList.add(mar);
+        monthList.add(apr);
+        monthList.add(may);
+        monthList.add(jun);
+        monthList.add(jul);
+        monthList.add(aug);
+        monthList.add(sep);
+        monthList.add(oct);
+        monthList.add(nov);
+        monthList.add(dec);
 
 
         Iterator<Row> rowIterator=invoiceSheet.iterator();
@@ -186,7 +198,9 @@ public class MonthlyProfitController {
             }
 
         }
-
+        for(MonthlyCalculation i:monthList){
+            monthlyTable.getItems().add(i);
+        }
 
 
     }
