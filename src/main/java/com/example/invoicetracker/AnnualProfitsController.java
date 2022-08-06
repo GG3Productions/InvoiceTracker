@@ -18,7 +18,7 @@ import java.text.DecimalFormat;
 import java.util.Iterator;
 
 public class AnnualProfitsController {
-  FileInputStream invoiceFilePath = new FileInputStream(new File("com/example/invoicetracker/dummyfile.xlsx"));
+  FileInputStream invoiceFilePath = new FileInputStream("src/main/java/com/example/invoicetracker/dummyfile.xlsx");
     @FXML
     private Button refresh;
 
