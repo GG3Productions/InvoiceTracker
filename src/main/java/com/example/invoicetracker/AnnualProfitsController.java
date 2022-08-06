@@ -6,6 +6,8 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -51,14 +53,17 @@ public class AnnualProfitsController {
         totalMadeColumn.setCellValueFactory(new PropertyValueFactory<>("totalMade"));
         piecesColumn.setCellValueFactory(new PropertyValueFactory<>("pieces"));
 
+        DataFormatter formatter = new DataFormatter();
+        FormulaEvaluator evaluator = invoiceWorkbook.getCreationHelper().createFormulaEvaluator();
+
         Iterator<Row> rowIterator = invoiceSheet.iterator();
         rowIterator.next();
         while(rowIterator.hasNext()){
             Row row = rowIterator.next();
-            String invoiceID = String.valueOf(row.getCell(3));
-            String totalMade = String.valueOf(row.getCell(9));
-            String pieces = String.valueOf(row.getCell(1));
-            String lots = String.valueOf(row.getCell(2));
+            String invoiceID = formatter.formatCellValue(row.getCell(3));
+            String totalMade = formatter.formatCellValue(row.getCell(9), evaluator);
+            String lots = formatter.formatCellValue(row.getCell(2));
+            String pieces = formatter.formatCellValue(row.getCell(1));
 
             AnnualInvoice invoice = new AnnualInvoice(invoiceID,lots,pieces,totalMade);
             annualTable.getItems().add(invoice);
