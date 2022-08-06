@@ -83,6 +83,7 @@ public class MonthlyProfitController {
 
         List<MonthlyCalculation> monthList = new ArrayList<>();
 
+
         Iterator<Row> rowIterator=invoiceSheet.iterator();
         rowIterator.next();
         while(rowIterator.hasNext()){
