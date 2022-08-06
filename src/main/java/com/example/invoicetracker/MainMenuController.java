@@ -28,31 +28,32 @@ public class MainMenuController {
     void onNewInvoiceClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AddNewInvo.fxml")));
         Scene scene = new Scene(root);
-        Stage primaryStage = new Stage();
-        primaryStage.initModality(Modality.APPLICATION_MODAL);
-        primaryStage.setTitle("Adding New Invoice.....");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Adding New Invoice.....");
+        stage.setScene(scene);
+        stage.show();
     }
 
     // When new purchase is clicked it sends the user to the new purchase page
     // So the user can now enter the information for a new purchase
+    // When the person clicks the "X" button before submitting  confirmation pops up that they want to cancel
     @FXML
     void onNewPurchaseClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("NewPurchase.fxml")));
         Scene scene = new Scene(root);
-        Stage primaryStage = new Stage();
-        primaryStage.setOnCloseRequest(evt ->{
+        Stage stage = new Stage();
+        stage.setOnCloseRequest(evt ->{
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "do you really want to cancel adding a new purchase?", ButtonType.YES,ButtonType.NO);
             ButtonType result = alert.showAndWait().orElse(ButtonType.NO);
             if(ButtonType.NO.equals(result)){
                 evt.consume();
             }
         });
-        primaryStage.initModality(Modality.APPLICATION_MODAL);
-        primaryStage.setTitle("New Purchase.....");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("New Purchase.....");
+        stage.setScene(scene);
+        stage.show();
     }
 
     // When the view monthly profits is clicked it gives a chart of cost/profit/sales for the current month that you are in.
@@ -60,11 +61,11 @@ public class MainMenuController {
     void onViewMonthlyProfitsClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MonthlyProfits.fxml")));
         Scene scene = new Scene(root);
-        Stage primaryStage = new Stage();
-        primaryStage.initModality(Modality.APPLICATION_MODAL);
-        primaryStage.setTitle("Monthly Profits");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Monthly Profits");
+        stage.setScene(scene);
+        stage.show();
     }
 
     // When the view annual profits is click it gives a chart of cost/ profit and sales for all year.
@@ -72,11 +73,11 @@ public class MainMenuController {
     void onViewAnnualProfit(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AnnualProfits.fxml")));
         Scene scene = new Scene(root);
-        Stage primaryStage = new Stage();
-        primaryStage.initModality(Modality.APPLICATION_MODAL);
-        primaryStage.setTitle("Annual Profits");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Annual Profits");
+        stage.setScene(scene);
+        stage.show();
     }
 
     // When edit orders is clicked it brings you to a window that allows you to edit the orders.

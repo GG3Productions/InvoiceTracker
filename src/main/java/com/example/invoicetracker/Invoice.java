@@ -62,4 +62,44 @@ public class Invoice {
     public double getTotalMade() {
         return totalMade;
     }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public void setLots(int lots) {
+        this.lots = lots;
+    }
+
+    public void setPiece(int piece) {
+        this.piece = piece;
+    }
+
+    public void setInvoiceNumber(int invoiceNumber) {
+        this.invoiceNumber = invoiceNumber;
+    }
+
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    public void setOrderTotal(double orderTotal) {
+        this.orderTotal = orderTotal;
+    }
+
+    public void setFinalTotal(double finalTotal) {
+        this.finalTotal = finalTotal;
+    }
+
+    public void setShipping(double shipping) {
+        this.shipping = shipping;
+    }
+
+    public void setRefunds(double refunds) {
+        this.refunds = refunds;
+    }
+
+    public void setTotalMade(double totalMade) {
+        this.totalMade = totalMade;
+    }
 }
