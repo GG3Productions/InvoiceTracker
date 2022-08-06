@@ -10,6 +10,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -17,7 +18,7 @@ import java.text.DecimalFormat;
 import java.util.Iterator;
 
 public class AnnualProfitsController {
-    FileInputStream invoiceFilePath = new FileInputStream("C:\\Users\\MGU31\\Invoice file .xlsx");
+    FileInputStream invoiceFilePath = new FileInputStream(new File("C:\\Users\\MGU31\\Invoice file .xlsx"));
     @FXML
     private Button refresh;
 
