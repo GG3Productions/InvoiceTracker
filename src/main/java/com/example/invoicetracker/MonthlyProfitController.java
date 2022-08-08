@@ -5,10 +5,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.FormulaEvaluator;
-import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -27,22 +24,22 @@ public class MonthlyProfitController {
     private TableView monthlyTable;
 
     @FXML
-    private TableColumn<MonthlyCalculation,String> monthNameColumn;
+    private TableColumn<MonthlyCalculationString,String> monthNameColumn;
 
     @FXML
-    private TableColumn<MonthlyCalculation,Integer> numberOfInvoicesColumn;
+    private TableColumn<MonthlyCalculationString,String> numberOfInvoicesColumn;
 
     @FXML
-    private TableColumn<MonthlyCalculation,Integer> numberOfLotsColumn;
+    private TableColumn<MonthlyCalculationString,String> numberOfLotsColumn;
 
     @FXML
-    private TableColumn<MonthlyCalculation,Integer> numberOfPiecesColumn;
+    private TableColumn<MonthlyCalculationString,String> numberOfPiecesColumn;
 
     @FXML
-    private TableColumn<MonthlyCalculation,String> monthlyTotalProfitColumn;
+    private TableColumn<MonthlyCalculationString,String> monthlyTotalProfitColumn;
 
     @FXML
-    private TableColumn<MonthlyCalculation,String> monthlyTotalShippingCost;
+    private TableColumn<MonthlyCalculationString,String> monthlyTotalShippingCost;
 
 
     FileInputStream invoiceFilePath = new FileInputStream("C:\\Users\\MGU31\\Invoice file .xlsx");
@@ -101,9 +98,14 @@ public class MonthlyProfitController {
         while(rowIterator.hasNext()){
             Row entry = rowIterator.next();
             if(entry.getCell(3)!=null && entry.getCell(3).getCellType() != CellType.BLANK){
-                String month = sdf.format(entry.getCell(1).getDateCellValue());
+                Date date = DateUtil.getJavaDate(entry.getCell(0).getNumericCellValue());
+                String pattern = "MM-dd-yy";
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+                String strDate = simpleDateFormat.format(date);
                 String lots = formatter.formatCellValue(entry.getCell(2));
                 String pieces = formatter.formatCellValue(entry.getCell(1));
+                String[] strArry = strDate.split("-");
+                String month = strArry[0];
 
                 int tempLots = Integer.parseInt(lots);
                 int tempPieces = Integer.parseInt(pieces);
@@ -111,7 +113,8 @@ public class MonthlyProfitController {
                 double tempShipping = entry.getCell(7).getNumericCellValue();
 
                 if(month == "01"){
-                    jan.setNumberOfLots(jan.getNumberOfLots() + tempLots);
+                    int number = jan.getNumberOfLots()+tempLots;
+                    jan.setNumberOfLots(number);
                     jan.setNumberOfPieces(jan.getNumberOfPieces() + tempPieces);
                     jan.setNumberOfInvoices(jan.getNumberOfInvoices() + 1);
                     jan.setShippingTotal(jan.getShippingTotal() + tempShipping);
@@ -199,7 +202,14 @@ public class MonthlyProfitController {
 
         }
         for(MonthlyCalculation i:monthList){
-            monthlyTable.getItems().add(i);
+            String profit = String.valueOf(i.getMonthlyProfit());
+            String lots = String.valueOf(i.getNumberOfLots());
+            String invoice = String.valueOf(i.getNumberOfInvoices());
+            String pieces = String.valueOf(i.getNumberOfPieces());
+            String ship = String.valueOf(i.getShippingTotal());
+            String name = i.getName();
+            MonthlyCalculationString newOne = new MonthlyCalculationString(name,lots,invoice,pieces,ship,profit);
+            monthlyTable.getItems().add(newOne);
         }
 
 

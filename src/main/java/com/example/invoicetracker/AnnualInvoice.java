@@ -1,13 +1,20 @@
 package com.example.invoicetracker;
 
-public class AnnualInvoice {
-    private String invoiceID,lots,pieces,totalMade;
+import java.util.Date;
 
-    public AnnualInvoice(String invoiceID,String lots,String pieces,String totalMade){
+public class AnnualInvoice {
+    private String invoiceID;
+    private String lots;
+    private String pieces;
+    private String totalMade;
+    private String dateString;
+
+    public AnnualInvoice(String invoiceID, String lots, String pieces, String totalMade, String dateString){
         this.invoiceID = invoiceID;
         this.lots = lots;
         this.pieces = pieces;
         this.totalMade = totalMade;
+        this.dateString = dateString;
     }
 
     public String getInvoiceID() {
@@ -40,5 +47,13 @@ public class AnnualInvoice {
 
     public void setTotalMade(String totalMade) {
         this.totalMade = totalMade;
+    }
+
+    public String getDate() {
+        return dateString;
+    }
+
+    public void setDate(Date date) {
+        this.dateString = dateString;
     }
 }

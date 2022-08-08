@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.invoicetracker.MonthlyProfitController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="622.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.invoicetracker.MonthlyProfitController">
+   <children>
+      <TableView fx:id="monthlyTable" prefHeight="400.0" prefWidth="515.0">
+        <columns>
+            <TableColumn fx:id="monthNameColumn" prefWidth="84.0" text="Month Name" />
+          <TableColumn fx:id="numberOfInvoicesColumn" prefWidth="66.4000244140625" text="Invoices" />
+          <TableColumn fx:id="numberOfLotsColumn" prefWidth="75.0" text="Lots" />
+            <TableColumn fx:id="numberOfPiecesColumn" prefWidth="75.0" text="Pieces" />
+            <TableColumn fx:id="monthlyTotalProfitColumn" prefWidth="108.79998779296875" text="Total Profits" />
+            <TableColumn fx:id="monthlyTotalShippingCost" prefWidth="105.60003662109375" text="Total Shipping" />
+        </columns>
+      </TableView>
+      <Button layoutX="529.0" layoutY="22.0" mnemonicParsing="false" onAction="#onRefreshMonthlyClick" text="REFRESH">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

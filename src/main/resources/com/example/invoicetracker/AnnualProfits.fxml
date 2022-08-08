@@ -8,19 +8,20 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="438.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.invoicetracker.AnnualProfitsController">
+<AnchorPane prefHeight="438.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.invoicetracker.AnnualProfitsController">
    <children>
-      <AnchorPane layoutY="-1.0" prefHeight="468.0" prefWidth="913.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutY="-1.0" prefHeight="438.0" prefWidth="1003.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-90.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TableView fx:id="annualTable" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="438.0" prefWidth="610.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="annualTable" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="438.0" prefWidth="691.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
+                  <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date" />
                 <TableColumn fx:id="invoiceIDColumn" editable="false" prefWidth="188.0" sortable="false" text="Invoice ID" />
                   <TableColumn fx:id="lotsColumn" editable="false" minWidth="0.0" prefWidth="123.0" sortable="false" text="Total Lots" />
                   <TableColumn fx:id="piecesColumn" editable="false" prefWidth="131.0" sortable="false" text="Total Pieces" />
                 <TableColumn fx:id="totalMadeColumn" editable="false" minWidth="9.600006103515625" prefWidth="173.0" sortable="false" text="Total Made" />
               </columns>
             </TableView>
-            <Pane layoutX="640.0" layoutY="34.0" prefHeight="72.0" prefWidth="218.0" AnchorPane.bottomAnchor="362.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="34.0">
+            <Pane layoutX="742.0" layoutY="28.0" prefHeight="42.0" prefWidth="265.0" AnchorPane.bottomAnchor="368.0" AnchorPane.leftAnchor="742.0" AnchorPane.rightAnchor="88.0" AnchorPane.topAnchor="28.0">
                <children>
                   <Label text="Total Profit:">
                      <font>
@@ -54,7 +55,7 @@
                   </Label>
                </children>
             </Pane>
-            <Button fx:id="refresh" layoutX="707.0" layoutY="154.0" mnemonicParsing="false" onAction="#onRefreshClick" text="Refresh">
+            <Button fx:id="refresh" layoutX="875.0" layoutY="152.0" mnemonicParsing="false" onAction="#onRefreshClick" text="Refresh">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

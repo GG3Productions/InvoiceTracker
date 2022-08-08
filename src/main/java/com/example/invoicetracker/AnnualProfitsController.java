@@ -3,22 +3,20 @@ package com.example.invoicetracker;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.FormulaEvaluator;
-import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 
 public class AnnualProfitsController {
-  FileInputStream invoiceFilePath = new FileInputStream(new File("com/example/invoicetracker/dummyfile.xlsx"));
+  //FileInputStream invoiceFilePath = new FileInputStream(new File("com/example/invoicetracker/dummyfile.xlsx"));
+  FileInputStream invoiceFilePath = new FileInputStream("C:\\Users\\MGU31\\Invoice file .xlsx");
     @FXML
     private Button refresh;
 
@@ -42,7 +40,14 @@ public class AnnualProfitsController {
     @FXML
     private TableColumn<AnnualInvoice, String>piecesColumn;
 
+    @FXML
+    private TableColumn<AnnualInvoice,String>dateColumn;
+
     public AnnualProfitsController() throws FileNotFoundException {
+    }
+
+    public static boolean isCellDateFormatted(Cell checkExcelDateFormat){
+        return true;
     }
 
     @FXML
@@ -54,6 +59,7 @@ public class AnnualProfitsController {
         lotsColumn.setCellValueFactory(new PropertyValueFactory<>("lots"));
         totalMadeColumn.setCellValueFactory(new PropertyValueFactory<>("totalMade"));
         piecesColumn.setCellValueFactory(new PropertyValueFactory<>("pieces"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
 
         DataFormatter formatter = new DataFormatter();
         FormulaEvaluator evaluator = invoiceWorkbook.getCreationHelper().createFormulaEvaluator();
@@ -74,6 +80,11 @@ public class AnnualProfitsController {
                 String totalMade = formatter.formatCellValue(row.getCell(9), evaluator);
                 String lots = formatter.formatCellValue(row.getCell(2));
                 String pieces = formatter.formatCellValue(row.getCell(1));
+                Date date = DateUtil.getJavaDate(row.getCell(0).getNumericCellValue());
+                String pattern = "MM-dd-yy";
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+                String strDate = simpleDateFormat.format(date);
+
 
                 int tempLots = Integer.parseInt(lots);
                 totalLots = totalLots + tempLots;
@@ -84,7 +95,7 @@ public class AnnualProfitsController {
                 double tempTotalMade = row.getCell(9).getNumericCellValue();
                 entireTotalMade = entireTotalMade + tempTotalMade;
 
-                AnnualInvoice invoice = new AnnualInvoice(invoiceID,lots,pieces,totalMade);
+                AnnualInvoice invoice = new AnnualInvoice(invoiceID,lots,pieces,totalMade,strDate);
                 annualTable.getItems().add(invoice);
             }
         }
