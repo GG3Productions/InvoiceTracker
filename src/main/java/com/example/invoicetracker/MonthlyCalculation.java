@@ -1,9 +1,9 @@
 package com.example.invoicetracker;
 
 public class MonthlyCalculation {
-    int numberOfLots,numberOfInvoices,numberOfPieces;
-    double shippingTotal,monthlyProfit;
-    String name;
+    private int numberOfLots,numberOfInvoices,numberOfPieces;
+    private double shippingTotal,monthlyProfit;
+    private String name;
 
     public MonthlyCalculation(int numberOfLots, int numberOfInvoices, int numberOfPieces, double shippingTotal, double monthlyProfit, String name) {
         this.numberOfLots = numberOfLots;
