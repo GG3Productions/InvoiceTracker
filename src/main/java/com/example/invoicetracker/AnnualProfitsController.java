@@ -21,7 +21,7 @@ public class AnnualProfitsController {
     private Button refresh;
 
     @FXML
-    private TableView annualTable;
+    private TableView<AnnualInvoice> annualTable;
 
     @FXML
     private Label yearsProfit,yearsPieces,yearsLots;
