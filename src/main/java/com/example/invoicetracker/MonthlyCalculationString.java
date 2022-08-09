@@ -3,7 +3,7 @@ package com.example.invoicetracker;
 public class MonthlyCalculationString {
     String name,lots,invoice,numberOfPieces,shippingTotal,monthlyProfit;
 
-    public MonthlyCalculationString(String name, String lots, String numberOfPieces, String shippingTotal, String monthlyProfit, String Invoice) {
+    public MonthlyCalculationString(String name, String lots, String numberOfPieces, String shippingTotal, String monthlyProfit, String invoice) {
         this.name = name;
         this.lots = lots;
         this.numberOfPieces = numberOfPieces;
