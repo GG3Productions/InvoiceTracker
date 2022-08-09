@@ -58,7 +58,7 @@ public class MonthlyProfitController {
         SimpleDateFormat sdf = new SimpleDateFormat("mm");
         DataFormatter formatter = new DataFormatter();
         FormulaEvaluator evaluator = invoiceWorkbook.getCreationHelper().createFormulaEvaluator();
-        DecimalFormat df = new DecimalFormat("#.##");
+        DecimalFormat df = new DecimalFormat("$#.##");
 
 
         MonthlyCalculation jan = new MonthlyCalculation(0,0,0,0,"January");
@@ -204,10 +204,10 @@ public class MonthlyProfitController {
         // this takes the month object from the array list and converts it to a string and adds it to table view
         int num = 0;
         for(MonthlyCalculation i:monthList){
-            String profit = String.valueOf(i.getMonthlyProfit());
+            String profit = String.valueOf(df.format(i.getMonthlyProfit()));
             String lots = String.valueOf(i.getNumberOfLots());
             String pieces = String.valueOf(i.getNumberOfPieces());
-            String ship = String.valueOf(i.getShippingTotal());
+            String ship = String.valueOf(df.format(i.getNumberOfLots()));
             String name = i.getName();
             String invoice = String.valueOf(invoiceList.get(num));
             MonthlyCalculationString newOne = new MonthlyCalculationString(name,lots,pieces,ship,profit,invoice);
