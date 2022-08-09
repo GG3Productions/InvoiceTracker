@@ -45,7 +45,7 @@ public class MonthlyProfitController {
     private TableColumn<MonthlyCalculation,String> monthlyTotalShippingCost;
 
 
-    FileInputStream invoiceFilePath = new FileInputStream("C:\\Users\\MGU31\\Invoice file .xlsx");
+    FileInputStream invoiceFilePath = new FileInputStream("src/main/java/com/example/invoicetracker/dummyfile.xlsx");
 
     public MonthlyProfitController() throws FileNotFoundException {
     }
