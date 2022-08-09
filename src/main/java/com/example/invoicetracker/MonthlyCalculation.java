@@ -1,13 +1,12 @@
 package com.example.invoicetracker;
 
 public class MonthlyCalculation {
-    private int numberOfLots,numberOfInvoices,numberOfPieces;
+    public int numberOfLots,numberOfPieces;
     private double shippingTotal,monthlyProfit;
     private String name;
 
-    public MonthlyCalculation(int numberOfLots, int numberOfInvoices, int numberOfPieces, double shippingTotal, double monthlyProfit, String name) {
+    public MonthlyCalculation(int numberOfLots, int numberOfPieces, double shippingTotal, double monthlyProfit, String name) {
         this.numberOfLots = numberOfLots;
-        this.numberOfInvoices = numberOfInvoices;
         this.numberOfPieces = numberOfPieces;
         this.shippingTotal = shippingTotal;
         this.monthlyProfit = monthlyProfit;
@@ -21,15 +20,6 @@ public class MonthlyCalculation {
     public void setNumberOfLots(int numberOfLots) {
         this.numberOfLots = numberOfLots;
     }
-
-    public int getNumberOfInvoices() {
-        return numberOfInvoices;
-    }
-
-    public void setNumberOfInvoices(int numberOfInvoices) {
-        this.numberOfInvoices = numberOfInvoices;
-    }
-
     public int getNumberOfPieces() {
         return numberOfPieces;
     }
