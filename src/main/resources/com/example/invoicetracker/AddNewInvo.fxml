@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="268.0" prefWidth="592.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.invoicetracker.AddNewInvoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="592.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.invoicetracker.AddNewInvoController">
    <children>
       <Button fx:id="submitInvo" layoutX="368.0" layoutY="227.0" mnemonicParsing="false" onAction="#onSubmitClick" text="Submit">
          <font>
@@ -25,17 +25,17 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="Month" layoutX="70.0" layoutY="22.0" prefHeight="26.0" prefWidth="42.0" promptText="MM">
+      <TextField fx:id="tMonth" layoutX="70.0" layoutY="22.0" prefHeight="26.0" prefWidth="42.0" promptText="MM">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="day" layoutX="120.0" layoutY="22.0" prefHeight="30.0" prefWidth="36.0" promptText="DD">
+      <TextField fx:id="tDay" layoutX="120.0" layoutY="22.0" prefHeight="30.0" prefWidth="36.0" promptText="DD">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="year" layoutX="170.0" layoutY="22.0" prefHeight="30.0" prefWidth="49.0" promptText="YYYY">
+      <TextField fx:id="tYear" layoutX="170.0" layoutY="22.0" prefHeight="30.0" prefWidth="49.0" promptText="YYYY">
          <font>
             <Font size="14.0" />
          </font>
@@ -86,42 +86,42 @@
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <TextField fx:id="lots" layoutX="333.0" layoutY="21.0" prefHeight="30.0" prefWidth="58.0" promptText="#####">
+      <TextField fx:id="tLots" layoutX="333.0" layoutY="21.0" prefHeight="30.0" prefWidth="58.0" promptText="#####">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="pieces" layoutX="496.0" layoutY="21.0" prefHeight="30.0" prefWidth="58.0" promptText="#####">
+      <TextField fx:id="tPieces" layoutX="496.0" layoutY="21.0" prefHeight="30.0" prefWidth="58.0" promptText="#####">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="invoiceNumber" layoutX="137.0" layoutY="59.0" prefHeight="30.0" prefWidth="115.0" promptText="############">
+      <TextField fx:id="tInvoiceNumber" layoutX="137.0" layoutY="59.0" prefHeight="30.0" prefWidth="115.0" promptText="############">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="orderNumber" layoutX="364.0" layoutY="59.0" prefHeight="30.0" prefWidth="115.0" promptText="############">
+      <TextField fx:id="tOrderNumber" layoutX="364.0" layoutY="59.0" prefHeight="30.0" prefWidth="115.0" promptText="############">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="orderTotal" layoutX="108.0" layoutY="128.0" prefHeight="30.0" prefWidth="86.0" promptText="\$XXXXX.XX">
+      <TextField fx:id="tOrderTotal" layoutX="108.0" layoutY="128.0" prefHeight="30.0" prefWidth="86.0" promptText="\$XXXXX.XX">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="finalTotal" layoutX="281.0" layoutY="128.0" prefHeight="30.0" prefWidth="86.0" promptText="\$XXXXX.XX">
+      <TextField fx:id="tFinalTotal" layoutX="281.0" layoutY="128.0" prefHeight="30.0" prefWidth="86.0" promptText="\$XXXXX.XX">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="114.0" layoutY="165.0" prefHeight="30.0" prefWidth="86.0" promptText="\$XXXXX.XX">
+      <TextField fx:id="tRefund" layoutX="114.0" layoutY="165.0" prefHeight="30.0" prefWidth="86.0" promptText="\$XXXXX.XX">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="shippingTotal" layoutX="482.0" layoutY="128.0" prefHeight="30.0" prefWidth="86.0" promptText="\$XXXXX.XX">
+      <TextField fx:id="tShippingTotal" layoutX="482.0" layoutY="128.0" prefHeight="30.0" prefWidth="86.0" promptText="\$XXXXX.XX">
          <font>
             <Font size="14.0" />
          </font>

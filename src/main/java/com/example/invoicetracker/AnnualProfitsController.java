@@ -16,7 +16,7 @@ import java.util.Iterator;
 
 public class AnnualProfitsController {
   FileInputStream invoiceFilePath = new FileInputStream(new File("src/main/java/com/example/invoicetracker/dummyfile.xlsx"));
-  //FileInputStream invoiceFilePath = new FileInputStream("C:\\Users\\MGU31\\Invoice file .xlsx");
+
     @FXML
     private Button refresh;
 
