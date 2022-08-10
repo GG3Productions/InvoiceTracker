@@ -10,6 +10,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -92,6 +93,7 @@ public class AddNewInvoController {
         double refund = Double.parseDouble(tRefund.getText());
         double shipping = Double.parseDouble(tShippingTotal.getText());
         boolean invoiceExists = false;
+        double totalMade = finalTotal - shipping;
 
         //Check to see if the invoice already exists if it exists stop the loop if not add the invoice.
         Iterator<Row> rowIterator = invoiceSheet.iterator();
@@ -101,7 +103,7 @@ public class AddNewInvoController {
             if(entry.getCell(3).getNumericCellValue() == invoiceNumber){
                 invoiceExists = true;
             }
-            if(entry.getCell(3).getNumericCellValue() != invoiceNumber){
+            if(entry.getCell(3).getNumericCellValue() != invoiceNumber && tInvoiceNumber != null){
                 //TODO make it so that we find the next blank row and add the invoice
 
                 //Gets the next empty row
@@ -121,6 +123,12 @@ public class AddNewInvoController {
                 orderTotalCell.setCellValue(monyfmt.format(orderTotal));
                 Cell finalTotalCell = invoiceSheet.getRow(newRow).getCell(6);
                 finalTotalCell.setCellValue(monyfmt.format(finalTotal));
+                Cell shippingCell = invoiceSheet.getRow(newRow).getCell(7);
+                shippingCell.setCellValue(shipping);
+                Cell refundCell = invoiceSheet.getRow(newRow).getCell(8);
+                refundCell.setCellValue(refund);
+                Cell totalMadeCell = invoiceSheet.getRow(newRow).getCell(9);
+                totalMadeCell.setCellValue(totalMade);
 
 
             }
