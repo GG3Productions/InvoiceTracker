@@ -15,10 +15,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.text.DecimalFormat;
 import java.util.Iterator;
 
@@ -64,8 +61,6 @@ public class AddNewInvoController {
     @FXML
     private TextField tYear;
 
-    FileInputStream invoiceFilePath = new FileInputStream(new File("src/main/java/com/example/invoicetracker/dummyfile.xlsx"));
-
     public AddNewInvoController() throws FileNotFoundException {
     }
 
@@ -74,7 +69,8 @@ public class AddNewInvoController {
         //TODO: make this add new invoice to the excel document
 
         // open the file and open the sheet
-        XSSFWorkbook invoiceWorkbook = new XSSFWorkbook(invoiceFilePath);
+        FileInputStream stream = new FileInputStream("src/main/java/com/example/invoicetracker/dummyfile.xlsx");
+        XSSFWorkbook invoiceWorkbook = new XSSFWorkbook(stream);
         XSSFSheet invoiceSheet = invoiceWorkbook.getSheetAt(0);
 
         //Creating the formats of the decimals that we want
@@ -98,41 +94,45 @@ public class AddNewInvoController {
         //Check to see if the invoice already exists if it exists stop the loop if not add the invoice.
         Iterator<Row> rowIterator = invoiceSheet.iterator();
         rowIterator.next();
-        while(rowIterator.hasNext() && invoiceExists == false){
+        while(rowIterator.hasNext()){
             Row entry = rowIterator.next();
-            if(entry.getCell(3).getNumericCellValue() == invoiceNumber){
-                invoiceExists = true;
-            }
-            if(entry.getCell(3).getNumericCellValue() != invoiceNumber && tInvoiceNumber != null){
-                //TODO make it so that we find the next blank row and add the invoice
-
-                //Gets the next empty row
-                int rowCount = invoiceSheet.getLastRowNum();
-                int newRow = rowCount + 1;
-
-                //Updating a cell by calling the row then cell
-                Cell pieceCell = invoiceSheet.getRow(newRow).getCell(1);
-                pieceCell.setCellValue(pieces);
-                Cell lotsCell = invoiceSheet.getRow(newRow).getCell(2);
-                lotsCell.setCellValue(lots);
-                Cell invoiceCell = invoiceSheet.getRow(newRow).getCell(3);
-                invoiceCell.setCellValue(invoiceNumber);
-                Cell orderNumberCell = invoiceSheet.getRow(newRow).getCell(4);
-                orderNumberCell.setCellValue(orderNumber);
-                Cell orderTotalCell = invoiceSheet.getRow(newRow).getCell(5);
-                orderTotalCell.setCellValue(monyfmt.format(orderTotal));
-                Cell finalTotalCell = invoiceSheet.getRow(newRow).getCell(6);
-                finalTotalCell.setCellValue(monyfmt.format(finalTotal));
-                Cell shippingCell = invoiceSheet.getRow(newRow).getCell(7);
-                shippingCell.setCellValue(shipping);
-                Cell refundCell = invoiceSheet.getRow(newRow).getCell(8);
-                refundCell.setCellValue(refund);
-                Cell totalMadeCell = invoiceSheet.getRow(newRow).getCell(9);
-                totalMadeCell.setCellValue(totalMade);
-
-
+            if (entry.getCell(3).getCellType() == CellType.NUMERIC) {
+                if(entry.getCell(3).getNumericCellValue() == invoiceNumber){
+                    // TODO verification window of existing invoice
+                    break;
+                }
             }
         }
+        //Gets the next empty row
+        int rowCount = invoiceSheet.getLastRowNum(); // 174 here
+        Row newRow = invoiceSheet.createRow(rowCount);
+
+
+        //Updating a cell by calling the row then cell
+        System.out.println("Writing to row " + rowCount);
+        Cell pieceCell = newRow.createCell(1);
+        pieceCell.setCellValue(pieces);
+        Cell lotsCell = newRow.createCell(2);
+        lotsCell.setCellValue(lots);
+        Cell invoiceCell = newRow.createCell(3);
+        invoiceCell.setCellValue(invoiceNumber);
+        Cell orderNumberCell = newRow.createCell(4);
+        orderNumberCell.setCellValue(orderNumber);
+        Cell orderTotalCell = newRow.createCell(5);
+        orderTotalCell.setCellValue(monyfmt.format(orderTotal));
+        Cell finalTotalCell = newRow.createCell(6);
+        finalTotalCell.setCellValue(monyfmt.format(finalTotal));
+        Cell shippingCell = newRow.createCell(7);
+        shippingCell.setCellValue(shipping);
+        Cell refundCell = newRow.createCell(8);
+        refundCell.setCellValue(refund);
+        Cell totalMadeCell = newRow.createCell(9);
+        totalMadeCell.setCellValue(totalMade);
+        FileOutputStream out = new FileOutputStream("src/main/java/com/example/invoicetracker/dummyfile.xlsx");
+        invoiceWorkbook.write(out);
+        out.close();
+        invoiceWorkbook.close();
+        System.out.println("Done!");
     }
     //TODO: Create a purchase tracker button that moves you to the purchase tracker page so that you can attach the purchase tracking to the invoice.
 
