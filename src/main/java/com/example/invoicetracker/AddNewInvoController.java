@@ -88,51 +88,56 @@ public class AddNewInvoController {
         double orderTotal = Double.parseDouble(tOrderTotal.getText());
         double refund = Double.parseDouble(tRefund.getText());
         double shipping = Double.parseDouble(tShippingTotal.getText());
-        boolean invoiceExists = false;
+        int invoiceExists = 0;
         double totalMade = finalTotal - shipping;
 
         //Check to see if the invoice already exists if it exists stop the loop if not add the invoice.
         Iterator<Row> rowIterator = invoiceSheet.iterator();
         rowIterator.next();
+        //search through the invoice sheet
         while(rowIterator.hasNext()){
             Row entry = rowIterator.next();
             if (entry.getCell(3).getCellType() == CellType.NUMERIC) {
                 if(entry.getCell(3).getNumericCellValue() == invoiceNumber){
                     // TODO verification window of existing invoice
+                    System.out.print("Already have this invoice");
+                    invoiceExists = 1;
                     break;
                 }
             }
         }
-        //Gets the next empty row
-        int rowCount = invoiceSheet.getLastRowNum(); // 174 here
-        Row newRow = invoiceSheet.createRow(rowCount);
+        if (invoiceExists == 0) {
+            //Gets the next empty row
+            int rowCount = invoiceSheet.getLastRowNum(); // 174 here
+            Row newRow = invoiceSheet.createRow(rowCount);
 
 
-        //Updating a cell by calling the row then cell
-        System.out.println("Writing to row " + rowCount);
-        Cell pieceCell = newRow.createCell(1);
-        pieceCell.setCellValue(pieces);
-        Cell lotsCell = newRow.createCell(2);
-        lotsCell.setCellValue(lots);
-        Cell invoiceCell = newRow.createCell(3);
-        invoiceCell.setCellValue(invoiceNumber);
-        Cell orderNumberCell = newRow.createCell(4);
-        orderNumberCell.setCellValue(orderNumber);
-        Cell orderTotalCell = newRow.createCell(5);
-        orderTotalCell.setCellValue(monyfmt.format(orderTotal));
-        Cell finalTotalCell = newRow.createCell(6);
-        finalTotalCell.setCellValue(monyfmt.format(finalTotal));
-        Cell shippingCell = newRow.createCell(7);
-        shippingCell.setCellValue(shipping);
-        Cell refundCell = newRow.createCell(8);
-        refundCell.setCellValue(refund);
-        Cell totalMadeCell = newRow.createCell(9);
-        totalMadeCell.setCellValue(totalMade);
-        FileOutputStream out = new FileOutputStream("src/main/java/com/example/invoicetracker/dummyfile.xlsx");
-        invoiceWorkbook.write(out);
-        out.close();
-        invoiceWorkbook.close();
-        System.out.println("Done!");
+            //Updating a cell by calling the row then cell
+            System.out.println("Writing to row " + rowCount);
+            Cell pieceCell = newRow.createCell(1);
+            pieceCell.setCellValue(pieces);
+            Cell lotsCell = newRow.createCell(2);
+            lotsCell.setCellValue(lots);
+            Cell invoiceCell = newRow.createCell(3);
+            invoiceCell.setCellValue(invoiceNumber);
+            Cell orderNumberCell = newRow.createCell(4);
+            orderNumberCell.setCellValue(orderNumber);
+            Cell orderTotalCell = newRow.createCell(5);
+            orderTotalCell.setCellValue(orderTotal);
+            Cell finalTotalCell = newRow.createCell(6);
+            finalTotalCell.setCellValue(finalTotal);
+            Cell shippingCell = newRow.createCell(7);
+            shippingCell.setCellValue(shipping);
+            Cell refundCell = newRow.createCell(8);
+            refundCell.setCellValue(refund);
+            Cell totalMadeCell = newRow.createCell(9);
+            totalMadeCell.setCellValue(totalMade);
+            FileOutputStream out = new FileOutputStream("src/main/java/com/example/invoicetracker/dummyfile.xlsx");
+            invoiceWorkbook.write(out);
+            invoiceWorkbook.close();
+            out.close();
+            System.out.println("Done!");
+        }
     }
     //TODO: Create a purchase tracker button that moves you to the purchase tracker page so that you can attach the purchase tracking to the invoice.
 
